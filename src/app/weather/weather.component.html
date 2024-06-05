@@ -1,0 +1,140 @@
+<div class="weather-container">
+    <!-- <h1>Weather</h1> -->
+    <form (ngSubmit)="getWeather()">
+        <input type="text" [(ngModel)]="city" name="city" placeholder="ENTER CITY NAME" required>
+        <button (click)="submit()" type="button">Submit</button>
+    </form>
+    <div *ngIf="showWeatherData">
+        <ng-container *ngFor="let weatherItemIcon of weatherData.weather">
+            <h2>Weather in {{ weatherData.name }} </h2>
+            <div class="main-icon">
+                <img [src]="weatherItemIcon.icon2" class="weather-icon">
+            </div>
+        </ng-container>
+        <div class="weather-table-container">
+            <!-- First -->
+            <table class="weather-table">
+                <tr>
+                    <th class="field-column">PROPERTY</th>
+                    <th class="value-column">VALUE</th>
+                </tr>
+                <tr>
+                    <td class="field-column">Temperature</td>
+                    <td class="value-column">{{ weatherData.main2.temp }}°C</td>
+                </tr>
+                <tr>
+                    <td class="field-column">Feels Like</td>
+                    <td class="value-column">{{ weatherData.main.feels_like }}</td>
+                </tr>
+                <tr>
+                    <td class="field-column">Temp Min</td>
+                    <td class="value-column">{{ weatherData.main2.temp_min }}°C</td>
+                </tr>
+                <tr>
+                    <td class="field-column">Temp Max</td>
+                    <td class="value-column">{{ weatherData.main2.temp_max }}°C</td>
+                </tr>
+                <tr>
+                    <td class="field-column">Pressure</td>
+                    <td class="value-column">{{ weatherData.main.pressure }}hPa</td>
+                </tr>
+                <tr>
+                    <td class="field-column">Humidity</td>
+                    <td class="value-column">{{ weatherData.main.humidity }}</td>
+                </tr>
+                <tr>
+                    <td class="field-column">Sea Level</td>
+                    <td class="value-column">{{ weatherData.main.sea_level }}</td>
+                </tr>
+                <tr>
+                    <td class="field-column">Ground Level</td>
+                    <td class="value-column">{{ weatherData.main.grnd_level }}</td>
+                </tr>
+            </table>
+            <!-- Second -->
+            <table class="weather-table">
+                <tr>
+                    <th class="field-column">PROPERTY</th>
+                    <th class="value-column">VALUE</th>
+                </tr>
+                <tr>
+                    <td class="field-column">Lon</td>
+                    <td class="value-column">{{ weatherData.coord.lon }}</td>
+                </tr>
+                <tr>
+                    <td class="field-column">Lat</td>
+                    <td class="value-column">{{ weatherData.coord.lat}}</td>
+                </tr>
+                <tr>
+                    <td class="field-column">Clouds All</td>
+                    <td class="value-column">{{ weatherData.clouds.all}}</td>
+                </tr>
+            </table>
+            <!-- Thired -->
+            <table class="weather-table">
+                <tr>
+                    <th class="field-column">PROPERTY</th>
+                    <th class="value-column">VALUE</th>
+                </tr>
+                <tr>
+                    <td class="field-column">Speed</td>
+                    <td class="value-column">{{ weatherData.wind.speed }}</td>
+                </tr>
+                <tr>
+                    <td class="field-column">Deg</td>
+                    <td class="value-column">{{ weatherData.wind.deg }}</td>
+                </tr>
+                <tr>
+                    <td class="field-column">Gust</td>
+                    <td class="value-column">{{ weatherData.wind.gust }}</td>
+                </tr>
+            </table>
+            <!-- Fourth -->
+            <table class="weather-table">
+                <tr>
+                    <th class="field-column">PROPERTY</th>
+                    <th class="value-column">VALUE</th>
+                </tr>
+                <tr>
+                    <td class="field-column">Countery</td>
+                    <td class="value-column">{{ weatherData.sysTwo.country }}</td>
+                </tr>
+
+
+                <tr>
+                    <td class="field-column">Sunrise</td>
+                    <td class="value-column">{{ weatherData.sysTwo.sunrise }}</td>
+                </tr>
+                <tr>
+                    <td class="field-column">Sunset</td>
+                    <td class="value-column">{{ weatherData.sysTwo.sunset }}</td>
+                </tr>
+            </table>
+            <!-- Five -->
+            <table class="weather-table">
+                <tr>
+                    <th class="field-column">PROPERTY</th>
+                    <th class="value-column">VALUE</th>
+                </tr>
+                <ng-container *ngFor="let weatherItem of weatherData.weather">
+                    <!-- <tr>
+                        <td class="field-column">Weather ID</td>
+                        <td class="value-column">{{ weatherItem.id }}</td>
+                    </tr> -->
+                    <tr>
+                        <td class="field-column">Main</td>
+                        <td class="value-column">{{ weatherItem.main }}</td>
+                    </tr>
+                    <tr>
+                        <td class="field-column">Description</td>
+                        <td class="value-column">{{ weatherItem.description }}</td>
+                    </tr>
+                    <!-- <tr>
+                        <td class="field-column">Icon</td>
+                        <td class="value-column"><img [src]="weatherItem.icon2"></td>
+                    </tr> -->
+                </ng-container>
+            </table>
+        </div>
+    </div>
+</div>
